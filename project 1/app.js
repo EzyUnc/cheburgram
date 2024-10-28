@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
-const mongoUri = 'mongodb+srv://<doktor128>:<Volk2002>@cluster0.mongodb.net/<cheburgram>?retryWrites=true&w=majority';
+const mongoUri = 'mongodb+srv://doktor128:<Volk2002>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram';
 
 // Подключение к MongoDB Atlas
 mongoose.connect(mongoUri)
