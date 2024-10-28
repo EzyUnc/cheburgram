@@ -5,10 +5,12 @@ const cors = require('cors');
 
 const app = express();
 
-// Подключение к MongoDB 
-mongoose.connect('mongodb://localhost:27017/chatdb')
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatdb'; // Резервный URI для локальной разработки
+
+mongoose.connect(mongoUri)
     .then(() => console.log('Подключено к MongoDB'))
     .catch(err => console.error('Ошибка подключения к MongoDB:', err));
+
 
 // Определение схемы и модели для сообщений
 const messageSchema = new mongoose.Schema({
