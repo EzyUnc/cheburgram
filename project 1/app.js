@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://doktor128:<Volk2002>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram";
+const uri = "mongodb+srv://doktor128:<1234>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
