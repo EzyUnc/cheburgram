@@ -5,27 +5,13 @@ const cors = require('cors');
 
 const app = express();
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://doktor128:<1234>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram";
+// Укажите свой строку подключения к MongoDB Atlas
+const uri = "mongodb+srv://doktor128:<1234>@cheburgram.oyjgb.mongodb.net/cheburgram?retryWrites=true&w=majority&appName=cheburgram";
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+// Подключение к MongoDB
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Подключено к MongoDB'))
-    .catch(err => console.error('Ошибка подключения к MongoDB:', err)); 
-
-async function run() {
-    try {
-        // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
-run().catch(console.dir);
+    .catch(err => console.error('Ошибка подключения к MongoDB:', err));
 
 // Определение схемы и модели для сообщений
 const messageSchema = new mongoose.Schema({
@@ -48,8 +34,6 @@ app.get('/get_messages', async (req, res) => {
         res.status(500).json({ error: 'Ошибка при получении сообщений' });
     }
 });
-
-
 
 // Маршрут для отправки сообщений
 app.post('/send_message', async (req, res) => {
