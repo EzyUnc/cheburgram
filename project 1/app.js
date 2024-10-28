@@ -7,7 +7,7 @@ const app = express();
 
 // Укажите свой строку подключения к MongoDB Atlas
 
-const uri = "mongodb+srv://1234:<1234>@cheburgram.oyjgb.mongodb.net/cheburgram?retryWrites=true&w=majority&appName=cheburgram";
+const uri = "mongodb+srv://bool:bool@cheburgram.oyjgb.mongodb.net/cheburgram?retryWrites=true&w=majority&appName=cheburgram";
 
 // Подключение к MongoDB
 mongoose.connect(uri)
