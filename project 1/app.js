@@ -5,13 +5,31 @@ const cors = require('cors');
 
 const app = express();
 
-const mongoUri = 'mongodb+srv://doktor128:<Volk2002>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram';
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://doktor128:<Volk2002>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram";
 
-// Подключение к MongoDB Atlas
-mongoose.connect(mongoUri)
-    .then(() => console.log('Подключено к MongoDB Atlas'))
-    .catch(err => console.error('Ошибка подключения к MongoDB:', err));
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
 
+async function run() {
+    try {
+        // Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        // Send a ping to confirm a successful connection
+        await client.db("admin").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    } finally {
+        // Ensures that the client will close when you finish/error
+        await client.close();
+    }
+}
+run().catch(console.dir);
 
 // Определение схемы и модели для сообщений
 const messageSchema = new mongoose.Schema({
