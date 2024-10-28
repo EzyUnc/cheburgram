@@ -9,13 +9,9 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://doktor128:<1234>@cheburgram.oyjgb.mongodb.net/?retryWrites=true&w=majority&appName=cheburgram";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Подключено к MongoDB'))
+    .catch(err => console.error('Ошибка подключения к MongoDB:', err)); 
 
 async function run() {
     try {
