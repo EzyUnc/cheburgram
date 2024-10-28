@@ -6,10 +6,11 @@ const cors = require('cors');
 const app = express();
 
 // Укажите свой строку подключения к MongoDB Atlas
-const uri = "mongodb+srv://doktor128:<1234>@cheburgram.oyjgb.mongodb.net/cheburgram?retryWrites=true&w=majority&appName=cheburgram";
+
+const uri = "mongodb+srv://1234:<1234>@cheburgram.oyjgb.mongodb.net/cheburgram?retryWrites=true&w=majority&appName=cheburgram";
 
 // Подключение к MongoDB
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
     .then(() => console.log('Подключено к MongoDB'))
     .catch(err => console.error('Ошибка подключения к MongoDB:', err));
 
