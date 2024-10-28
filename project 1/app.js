@@ -5,10 +5,11 @@ const cors = require('cors');
 
 const app = express();
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatdb'; // Резервный URI для локальной разработки
+const mongoUri = 'mongodb+srv://<doktor128>:<Volk2002>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-mongoose.connect(mongoUri)
-    .then(() => console.log('Подключено к MongoDB'))
+// Подключение к MongoDB Atlas
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Подключено к MongoDB Atlas'))
     .catch(err => console.error('Ошибка подключения к MongoDB:', err));
 
 
